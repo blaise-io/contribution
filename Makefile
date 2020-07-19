@@ -3,12 +3,15 @@ VERSION := $(shell cat VERSION)
 
 .PHONY: release # Create releases for popular systems.
 release:
-	env GOARCH=amd64 GOOS=darwin go build -o release/contribution-$(VERSION)-x64-macos .
-	env GOARCH=amd64 GOOS=linux go build -o release/contribution-$(VERSION)-x64-linux .
-	env GOARCH=amd64 GOOS=windows go build -o release/contribution-$(VERSION)-x64.exe .
+	env GOARCH=amd64 GOOS=darwin go build -ldflags="-s -w" \
+		-o release/contribution-$(VERSION)-x64-macos .
+	env GOARCH=amd64 GOOS=linux go build -ldflags="-s -w" \
+		-o release/contribution-$(VERSION)-x64-linux .
+	env GOARCH=amd64 GOOS=windows go build -ldflags="-s -w" \
+		-o release/contribution-$(VERSION)-x64.exe .
 
 
-.PHONY: release-tag # Create and push a release tag
+.PHONY: release-tag # Create and push a release tag.
 release-tag:
 	git tag $(VERSION)
 	git push origin --tags
