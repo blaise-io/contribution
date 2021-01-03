@@ -110,11 +110,10 @@ func PushAll(dir string, project string, branch string) error {
 	return command(dir, "git", "push", "-fu", githubURL, branch)
 }
 
-func pixelDaysAgo(x int, y int, w int, weeksAgo int) int {
-	ago := int(time.Now().Weekday()) + 1 // start on a Sunday
-	ago += (w - 1 - x + weeksAgo) * 7
-	ago += (6 - y)
-	return ago
+func pixelDaysAgo(x int, y int, width int, weeksAgo int) int {
+	startDaysAgo := (width + weeksAgo) * 7
+	startDaysAgo += int(time.Now().Weekday())
+	return startDaysAgo - (x * 7) - y
 }
 
 func drawPixel(dir string, f *os.File, px GraphPixel, pixelChrs string) error {
