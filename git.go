@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 	"time"
 )
@@ -79,7 +80,7 @@ func CreateBranch(dir string, branch string) error {
 // CommitAll converts and executes all GraphPixels to git commits.
 func CommitAll(dir string, graph Graph, args Args) error {
 	chrs := ""
-	filename := dir + string(os.PathSeparator) + "README.md"
+	filename := filepath.Join(dir, "README.md")
 	f, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		return err
