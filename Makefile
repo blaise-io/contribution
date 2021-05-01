@@ -1,7 +1,7 @@
 VERSION := $(shell cat VERSION)
 
-
-.PHONY: release # Create releases for popular systems.
+# Create releases for popular systems.
+.PHONY: release
 release:
 	env GOARCH=amd64 GOOS=darwin go build -ldflags="-s -w" \
 		-o release/contribution-$(VERSION)-x64-macos .
@@ -10,14 +10,15 @@ release:
 	env GOARCH=amd64 GOOS=windows go build -ldflags="-s -w" \
 		-o release/contribution-$(VERSION)-x64.exe .
 
-
-.PHONY: release-tag # Create and push a release tag.
+# Create and push a release tag.
+.PHONY: release-tag
 release-tag:
 	git tag $(VERSION)
 	git push origin --tags
 
 
-.PHONY: README.md # Append help command to documentation.
+# Append help command to documentation.
+.PHONY: README.md
 README.md:
 	@sed '/<!-- .* -->/q' README.md > README.md.tmp
 	@mv README.md.tmp README.md  # -i does not work on macOS

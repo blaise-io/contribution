@@ -5,7 +5,7 @@ import (
 	"image"
 	"io/ioutil"
 	"os"
-	"path"
+	"path/filepath"
 )
 
 func preview(img image.Image) error {
@@ -23,7 +23,7 @@ func push(img image.Image, args Args) error {
 	colorMapped := getColorMappedImage(img)
 	commits := ImageToGraphPixels(colorMapped, args)
 
-	dir, err := ioutil.TempDir("", path.Base(os.Args[0]))
+	dir, err := ioutil.TempDir("", filepath.Base(os.Args[0]))
 	if err != nil {
 		return err
 	}

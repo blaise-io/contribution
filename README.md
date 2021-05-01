@@ -55,7 +55,7 @@ Contribution is provided as a binary with a command line interface.
 ### `contribution -help`
 ```
 Draw an image on your GitHub contribution history.
-By Blaise Kal, 2020
+By Blaise Kal, 2021
 
 Preview contribution history graph without pushing
   contribution preview -img /path/to/image.png

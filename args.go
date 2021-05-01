@@ -4,7 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"path"
+	"path/filepath"
+	"time"
 )
 
 // Args contains represents CLI arguments for this program.
@@ -26,7 +27,7 @@ func GetArgs() Args {
 	}
 
 	push := flag.NewFlagSet("push", flag.ExitOnError)
-	push.StringVar(&args.githubBranch, "branch", path.Base(os.Args[0]), "Git branch to push to.")
+	push.StringVar(&args.githubBranch, "branch", "contribution", "Git branch to push to.")
 	push.IntVar(&args.weeksAgo, "w", 0, "Weeks ago of all activity. A value of 2 will move activity two pixels to the left.")
 	push.StringVar(&args.githubProject, "project", "", "GitHub username/project to push to. (required)")
 	push.Usage = func() {
@@ -62,15 +63,15 @@ func GetArgs() Args {
 // exitWithHelp exits with global help
 func exitWithHelp(preview *flag.FlagSet, push *flag.FlagSet) {
 	fmt.Fprintf(os.Stderr, "Draw an image on your GitHub contribution history.\n")
-	fmt.Fprintf(os.Stderr, "By Blaise Kal, 2020\n\n")
+	fmt.Fprintf(os.Stderr, "By Blaise Kal, %d\n\n", time.Now().Year())
 	fmt.Fprintf(os.Stderr, "Preview contribution history graph without pushing\n")
-	fmt.Fprintf(os.Stderr, "  %s %s -img /path/to/image.png\n", path.Base(os.Args[0]), preview.Name())
+	fmt.Fprintf(os.Stderr, "  %s %s -img /path/to/image.png\n", filepath.Base(os.Args[0]), preview.Name())
 	fmt.Fprintf(os.Stderr, "Preview usage and options\n")
-	fmt.Fprintf(os.Stderr, "  %s %s -help\n\n", path.Base(os.Args[0]), preview.Name())
+	fmt.Fprintf(os.Stderr, "  %s %s -help\n\n", filepath.Base(os.Args[0]), preview.Name())
 	fmt.Fprintf(os.Stderr, "Push contribution history graph to GitHub\n")
-	fmt.Fprintf(os.Stderr, "  %s %s -img /path/to/image.png -project username/project\n", path.Base(os.Args[0]), push.Name())
+	fmt.Fprintf(os.Stderr, "  %s %s -img /path/to/image.png -project username/project\n", filepath.Base(os.Args[0]), push.Name())
 	fmt.Fprintf(os.Stderr, "Push usage and options\n")
-	fmt.Fprintf(os.Stderr, "  %s %s -help\n", path.Base(os.Args[0]), push.Name())
+	fmt.Fprintf(os.Stderr, "  %s %s -help\n", filepath.Base(os.Args[0]), push.Name())
 	os.Exit(0)
 }
 
@@ -78,7 +79,7 @@ func exitWithHelp(preview *flag.FlagSet, push *flag.FlagSet) {
 func exitWithPreviewHelp(flagset *flag.FlagSet) {
 	fmt.Fprintf(os.Stderr, "Preview contribution history graph without pushing.\n")
 	fmt.Fprintf(os.Stderr, "Example usage:\n")
-	fmt.Fprintf(os.Stderr, "  %s %s -img image.png\n\n", path.Base(os.Args[0]), os.Args[1])
+	fmt.Fprintf(os.Stderr, "  %s %s -img image.png\n\n", filepath.Base(os.Args[0]), os.Args[1])
 	flag.PrintDefaults()
 	flagset.PrintDefaults()
 	os.Exit(0)
@@ -88,7 +89,7 @@ func exitWithPreviewHelp(flagset *flag.FlagSet) {
 func exitWithPushHelp(flagset *flag.FlagSet) {
 	fmt.Fprintf(os.Stderr, "Push contribution history graph to GitHub\n")
 	fmt.Fprintf(os.Stderr, "Example usage:\n")
-	fmt.Fprintf(os.Stderr, "  %s %s -project username/project\n\n", path.Base(os.Args[0]), os.Args[1])
+	fmt.Fprintf(os.Stderr, "  %s %s -project username/project\n\n", filepath.Base(os.Args[0]), os.Args[1])
 	flag.PrintDefaults()
 	flagset.PrintDefaults()
 	os.Exit(0)
