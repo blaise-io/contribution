@@ -2,6 +2,8 @@
 
 Draw an image on your GitHub contribution graph.
 
+#### Examples
+
 | ![Heart](image/result/heart.png)            | ![Skull](image/result/skull.png)            |
 | ------------------------------------------- | ------------------------------------------- |
 | ![Creeper](image/result/creeper.png)        | ![I need a job](image/result/ineedajob.png) |
@@ -13,7 +15,7 @@ GitHub displays commits in the contribution history graph. Contribution pushes
 a bunch of commits with a custom date using `git commit --date <date>`. It 
 bundles multiple commits on a single day to achieve a darker pixel in the graph.
 
-The GitHub contribution graph is 52 x 7 pixels and shows up to five shades for
+The GitHub contribution graph is 52 × 7 pixels and shows up to five shades for
 activity. This app automatically limits the colors and dimensions of your input 
 image to match these restrictions. Use the [preview](#contribution-preview--help) 
 subcommand if you're not feeling lucky.
@@ -21,16 +23,10 @@ subcommand if you're not feeling lucky.
 Warning: you cannot remove contribution activity on GitHub unless you delete a 
 project, so you probably want to push to a project specifically created for 
 this purpose. Contributions to secret projects may also be shown, depending on 
-your settings.
+your GitHub settings.
 
-Contribution uses your default SSH settings. Use a custom identity and author 
-[using `GIT_SSH_COMMAND` and `GIT_AUTHOR_EMAIL` env variables.](https://gist.github.com/blaise-io/7a90dafb9ecee3022c8cf89e92b4dcc4)
-
-
-## Limitations
-
- - Does not analyze your existing activity to offset contribution commits
- - Only PNG images
+Contribution uses your default SSH identity. If you want to use another identity,
+you can do so by setting the [`GIT_SSH_COMMAND` and `GIT_AUTHOR_EMAIL` env variables.](https://gist.github.com/blaise-io/7a90dafb9ecee3022c8cf89e92b4dcc4)
 
 
 ## Download
