@@ -155,7 +155,7 @@ func markdownStr(pixelChrs string, ncommits int) string {
 }
 
 func commit(dir string, daysAgo int) error {
-	date := fmt.Sprintf("%d days ago noon", daysAgo)
+	date := time.Now().AddDate(0, 0, -daysAgo).Format(time.RFC3339)
 	return commands(dir,
 		[]string{"git", "add", "."},
 		[]string{
@@ -171,7 +171,6 @@ func commit(dir string, daysAgo int) error {
 func command(dir string, name string, arg ...string) error {
 	cmd := exec.Command(name, arg...)
 	cmd.Dir = dir
-	cmd.Env = append(os.Environ(), "TZ=UTC")
 
 	response, err := cmd.CombinedOutput()
 	responseStr := string(response)
