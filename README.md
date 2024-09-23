@@ -1,7 +1,5 @@
 # Contribution
-
 Draw an image on your GitHub contribution graph.
-
 #### Examples
 
 | ![Heart](image/result/heart.png)            | ![Skull](image/result/skull.png)            |
