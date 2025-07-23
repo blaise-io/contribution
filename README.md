@@ -27,7 +27,7 @@ your GitHub settings.
 
 Contribution uses your default SSH and Git user, which can be tested with 
 `ssh -T git@github.com` and `git config --global user.email`. If you prefer to 
-use another identity, set GIT_SSH_COMMAND='ssh -i /other/id_rsa' and/or 
+use another identity, set `GIT_SSH_COMMAND='ssh -i /other/id_rsa'` and/or 
 `git config --global user.email "other@example.org"`.
 
 ## Download
