@@ -25,9 +25,9 @@ project, so you probably want to push to a project specifically created for
 this purpose. Contributions to secret projects may also be shown, depending on 
 your GitHub settings.
 
-Contribution uses your default SSH and Git user, which can be tested with 
-`ssh -T git@github.com` and `git config --global user.email`. If you prefer to 
-use another identity, set `GIT_SSH_COMMAND='ssh -i /other/id_rsa'` and/or 
+Contribution uses your default SSH settings and global Git user, which can be 
+tested with `ssh -T git@github.com` and `git config --global user.email`. If you 
+prefer to use another identity, set `GIT_SSH_COMMAND='ssh -i /other/id_rsa'` and 
 `git config --global user.email "other@example.org"`.
 
 ## Download
