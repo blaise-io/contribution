@@ -25,13 +25,14 @@ project, so you probably want to push to a project specifically created for
 this purpose. Contributions to secret projects may also be shown, depending on 
 your GitHub settings.
 
-Contribution uses your default SSH identity. If you want to use another identity,
-you can do so by setting the [`GIT_SSH_COMMAND` and `GIT_AUTHOR_EMAIL` env variables.](https://gist.github.com/blaise-io/7a90dafb9ecee3022c8cf89e92b4dcc4)
-
+Contribution uses your default SSH and Git user, which can be tested with 
+`ssh -T git@github.com` and `git config --global user.email`. If you prefer to 
+use another identity, set GIT_SSH_COMMAND='ssh -i /other/id_rsa' and/or 
+`git config --global user.email "other@example.org"`.
 
 ## Download
 
-You can find prebuilt binaries voor Windows, macOS and Linux in 
+You can find prebuilt binaries for Windows, macOS and Linux in 
 [releases](https://github.com/blaise-io/contribution/releases/latest).
 
 Or clone the project and build yourself.
